@@ -30,19 +30,19 @@ public class SnakeMovement : MonoBehaviour
     {
         if(CanMove)
         {
-            if (Input.GetKeyDown(KeyCode.W))                         /* This nested loop gets player input and updates direction */
+            if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))                         /* This nested loop gets player input and updates direction */
             {
                 direction = Vector2.up;
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow))
             {
                 direction = Vector2.down;
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 direction = Vector2.left;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow))
             {
                 direction = Vector2.right;
             }
@@ -51,16 +51,21 @@ public class SnakeMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        for(int i = segments.Count - 1; i > 0; i--)
+        //If the player can move, continue its movement path, otherwise cease movement
+        if (CanMove)
         {
-            segments[i].position = segments[i - 1].position;
-        }
+            for (int i = segments.Count - 1; i > 0; i--)
+            {
+                segments[i].position = segments[i - 1].position;
+            }
 
-        this.transform.position = new Vector3(
-            Mathf.Round(this.transform.position.x) + direction.x,
-            Mathf.Round(this.transform.position.y) + direction.y,
-            0.0f);
+            this.transform.position = new Vector3(
+                Mathf.Round(this.transform.position.x) + direction.x,
+                Mathf.Round(this.transform.position.y) + direction.y,
+                0.0f);
+        }
     }
+        
 
     void Grow()
     {
@@ -82,6 +87,7 @@ public class SnakeMovement : MonoBehaviour
 
         this.transform.position = Vector3.zero;
         gameOverText.enabled = false;
+        CanMove = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other) //When snake collides with the food it grows
@@ -97,6 +103,7 @@ public class SnakeMovement : MonoBehaviour
             gameOverText.enabled = true;
             CanMove = false;
             Invoke("GameOver", 3f);
+            
         }
     }
 }
