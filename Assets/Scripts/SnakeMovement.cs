@@ -8,16 +8,19 @@ public class SnakeMovement : MonoBehaviour
     private Vector2 direction = Vector2.right; //Snake will by default start moving to the right when the game starts
     public Transform segmentPrefab;
     List<Transform> segments;
+    public bool CanMove = true;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     private int score = 0;
+    private Rigidbody2D rbd;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         gameOverText.enabled = false;
+        CanMove = true;
         segments = new List<Transform>(); //Create new list every game
         segments.Add(this.transform);   //Init with head of snake 
     }
@@ -25,23 +28,25 @@ public class SnakeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))                         /* This nested loop gets player input and updates direction */
+        if(CanMove)
         {
-            direction = Vector2.up;
+            if (Input.GetKeyDown(KeyCode.W))                         /* This nested loop gets player input and updates direction */
+            {
+                direction = Vector2.up;
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                direction = Vector2.down;
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                direction = Vector2.left;
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                direction = Vector2.right;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            direction = Vector2.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            direction = Vector2.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            direction = Vector2.right;
-        }
-
     }
 
     void FixedUpdate()
@@ -90,6 +95,7 @@ public class SnakeMovement : MonoBehaviour
         else if (other.tag == "Obstacle")
         {
             gameOverText.enabled = true;
+            CanMove = false;
             Invoke("GameOver", 3f);
         }
     }
