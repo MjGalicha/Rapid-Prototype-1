@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 using TMPro;
 
 public class SnakeMovement : MonoBehaviour
@@ -15,6 +15,7 @@ public class SnakeMovement : MonoBehaviour
     bool CanMoveFront = true;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
     private int score = 0;
     private Rigidbody2D rbd;
@@ -27,6 +28,7 @@ public class SnakeMovement : MonoBehaviour
         CanMove = true;
         segments = new List<Transform>(); //Create new list every game
         segments.Add(this.transform);   //Init with head of snake 
+        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
     // Update is called once per frame
@@ -113,6 +115,11 @@ public class SnakeMovement : MonoBehaviour
             score++;
             scoreText.text = score.ToString();
             Grow();
+            if(score > PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+                highScoreText.text = score.ToString();
+            }
         }
         else if (other.tag == "Obstacle")
         {
