@@ -36,7 +36,7 @@ public class SnakeMovement : MonoBehaviour
     {
         if(CanMove)
         {                       
-            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && CanMoveFront == true)                         /* This nested loop gets player input and updates direction */
+            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && CanMoveFront == true)  /* This nested loop gets player input and updates direction */
             {
                 direction = Vector2.up;
                 CanMoveBack = false;
