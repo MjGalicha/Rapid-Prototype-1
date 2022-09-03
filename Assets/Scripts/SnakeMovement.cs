@@ -33,45 +33,29 @@ public class SnakeMovement : MonoBehaviour
     void Update()
     {
         if(CanMove)
-        {
-<<<<<<< Updated upstream
-            if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow))                         /* This nested loop gets player input and updates direction */
-=======
-            if (Input.GetKeyDown(KeyCode.W) && CanMoveFront == true)                         /* This nested loop gets player input and updates direction */
->>>>>>> Stashed changes
+        {                       
+            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && CanMoveFront == true)                         /* This nested loop gets player input and updates direction */
             {
                 direction = Vector2.up;
                 CanMoveBack = false;
                 CanMoveRight = true;
                 CanMoveLeft = true;
             }
-<<<<<<< Updated upstream
-            else if (Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow))
-=======
-            else if (Input.GetKeyDown(KeyCode.S) && CanMoveBack == true)
->>>>>>> Stashed changes
+            else if ((Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow)) && CanMoveBack == true)
             {
                 direction = Vector2.down;
                 CanMoveFront = false;
                 CanMoveRight = true;
                 CanMoveLeft = true;
             }
-<<<<<<< Updated upstream
-            else if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow))
-=======
-            else if (Input.GetKeyDown(KeyCode.A) && CanMoveLeft == true)
->>>>>>> Stashed changes
+            else if ((Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow)) && CanMoveLeft == true)
             {
                 direction = Vector2.left;
                 CanMoveRight = false;
                 CanMoveFront = true;
                 CanMoveBack = true;
             }
-<<<<<<< Updated upstream
-            else if (Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow))
-=======
-            else if (Input.GetKeyDown(KeyCode.D) && CanMoveRight == true)
->>>>>>> Stashed changes
+            else if ((Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow)) && CanMoveRight == true)
             {
                 direction = Vector2.right;
                 CanMoveLeft = false;
