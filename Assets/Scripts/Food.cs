@@ -7,8 +7,6 @@ public class Food : MonoBehaviour
 {
     public Collider2D gridArea;
 
-
-
     public void RandomizePosition()
     {
         Bounds bounds = gridArea.bounds; //get bounds of the grid area
@@ -36,12 +34,5 @@ public class Food : MonoBehaviour
     void Start()
     {
         RandomizePosition();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

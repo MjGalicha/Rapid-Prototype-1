@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour
 {
     private Vector2 direction = Vector2.right; //Snake will by default start moving to the right when the game starts
     public Transform segmentPrefab;
     List<Transform> segments;
-    public bool CanMove = true;
-    bool CanMoveLeft = true;
-    bool CanMoveRight = true;
-    bool CanMoveBack = true;
-    bool CanMoveFront = true;
+    public bool CanMove;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
+    public float speed = 2f;
     private int score = 0;
     private Rigidbody2D rbd;
 
@@ -36,33 +34,21 @@ public class SnakeMovement : MonoBehaviour
     {
         if(CanMove)
         {                       
-            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && CanMoveFront == true)  /* This nested loop gets player input and updates direction */
+            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && direction != Vector2.down)  /* This nested loop gets player input and updates direction */
             {
                 direction = Vector2.up;
-                CanMoveBack = false;
-                CanMoveRight = true;
-                CanMoveLeft = true;
             }
-            else if ((Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow)) && CanMoveBack == true)
-            {
+            else if ((Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow)) && direction != Vector2.up)
+            { 
                 direction = Vector2.down;
-                CanMoveFront = false;
-                CanMoveRight = true;
-                CanMoveLeft = true;
             }
-            else if ((Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow)) && CanMoveLeft == true)
+            else if ((Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow)) && direction != Vector2.right)
             {
                 direction = Vector2.left;
-                CanMoveRight = false;
-                CanMoveFront = true;
-                CanMoveBack = true;
             }
-            else if ((Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow)) && CanMoveRight == true)
+            else if ((Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow)) && direction != Vector2.left)
             {
                 direction = Vector2.right;
-                CanMoveLeft = false;
-                CanMoveFront = true;
-                CanMoveBack = true;
             }
         }
     }
@@ -78,8 +64,8 @@ public class SnakeMovement : MonoBehaviour
             }
 
             this.transform.position = new Vector3(
-                Mathf.Round(this.transform.position.x) + direction.x,
-                Mathf.Round(this.transform.position.y) + direction.y,
+                (Mathf.Round(this.transform.position.x) + direction.x),
+                (Mathf.Round(this.transform.position.y) + direction.y),
                 0.0f);
         }
     }
@@ -106,6 +92,7 @@ public class SnakeMovement : MonoBehaviour
         this.transform.position = Vector3.zero;
         gameOverText.enabled = false;
         CanMove = true;
+        SceneManager.LoadScene("GameScene");
     }
 
     private void OnTriggerEnter2D(Collider2D other) //When snake collides with the food it grows
