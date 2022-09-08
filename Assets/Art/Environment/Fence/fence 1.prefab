@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5347739750344040011}
   - component: {fileID: 4973043630965608862}
+  - component: {fileID: 1927137036293604153}
   m_Layer: 0
   m_Name: Fence_Down_Endcap (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 222eeecf5a1aa5e4bb26563066e3a970, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,6 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1927137036293604153
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783114926769526293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
 --- !u!1 &4239258107327919343
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,9 +108,10 @@ GameObject:
   m_Component:
   - component: {fileID: 32087957316764711}
   - component: {fileID: 6760369599465435596}
+  - component: {fileID: 14366080058432601}
   m_Layer: 0
   m_Name: Fence_Down (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 75a47f53605c9fa4a9589bb39e162441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -168,6 +183,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &14366080058432601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239258107327919343}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
 --- !u!1 &5006145007321326687
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,9 +206,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6487965908255438714}
   - component: {fileID: 7074371260258336363}
+  - component: {fileID: 426078101964711765}
   m_Layer: 0
   m_Name: Fence_Down_Endcap (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +269,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 222eeecf5a1aa5e4bb26563066e3a970, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -252,6 +281,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &426078101964711765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006145007321326687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
 --- !u!1 &6067691066344963434
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,9 +304,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4750479347432947150}
   - component: {fileID: 5940299554439413745}
+  - component: {fileID: 3319380018013068382}
   m_Layer: 0
   m_Name: Fence_Down (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +367,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 75a47f53605c9fa4a9589bb39e162441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -336,6 +379,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &3319380018013068382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067691066344963434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
 --- !u!1 &8026702431391915032
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,9 +402,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702431391915035}
   - component: {fileID: 8026702431391915034}
+  - component: {fileID: 455093867158674218}
   m_Layer: 0
   m_Name: Fence_Side
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +465,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c6083fb35d6c6b74da364562a606bfa8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -420,6 +477,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &455093867158674218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702431391915032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.26325607, z: 0.2}
+  m_Center: {x: 0.064733505, y: 0.04898739, z: 0}
 --- !u!1 &8026702431435148260
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,9 +543,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702431811909660}
   - component: {fileID: 8026702431811909663}
+  - component: {fileID: 2088196738818724468}
   m_Layer: 0
   m_Name: Fence_Side_Endcap
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -535,7 +606,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c47f7593f9ac3cf41ac965b47d8e1b0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -547,6 +618,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &2088196738818724468
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702431811909661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.26325607, z: 0.2}
+  m_Center: {x: 0.064733505, y: 0.04898739, z: 0}
 --- !u!1 &8026702431970810839
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,9 +641,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702431970810838}
   - component: {fileID: 8026702431970810825}
+  - component: {fileID: 9047367451137653745}
   m_Layer: 0
   m_Name: Fence_Down_Endcap
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -619,7 +704,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 222eeecf5a1aa5e4bb26563066e3a970, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -631,6 +716,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &9047367451137653745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702431970810839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
 --- !u!1 &8026702432439863287
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,9 +739,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702432439863286}
   - component: {fileID: 8026702432439863273}
+  - component: {fileID: 13853515702138640}
   m_Layer: 0
   m_Name: Fence_Gate
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -703,7 +802,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b2ed3a2582057624b9e5a27baa66c2a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -715,6 +814,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &13853515702138640
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702432439863287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.25968742, z: 0.19999999}
+  m_Center: {x: 0.06473353, y: -0.027739525, z: 0}
 --- !u!1 &8026702432934907001
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,9 +837,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702432934907000}
   - component: {fileID: 8026702432934907003}
+  - component: {fileID: 1018250681984254555}
   m_Layer: 0
   m_Name: Fence_Side_Endcap (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -787,7 +900,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c47f7593f9ac3cf41ac965b47d8e1b0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -799,6 +912,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1018250681984254555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702432934907001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.26325607, z: 0.2}
+  m_Center: {x: 0.064733505, y: 0.04898739, z: 0}
 --- !u!1 &8026702433067735261
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,9 +935,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702433067735260}
   - component: {fileID: 8026702433067735263}
+  - component: {fileID: 5306667699624871455}
   m_Layer: 0
   m_Name: Fence_Side_Endcap (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,7 +998,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c47f7593f9ac3cf41ac965b47d8e1b0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -883,6 +1010,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &5306667699624871455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702433067735261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.26325607, z: 0.2}
+  m_Center: {x: 0.064733505, y: 0.04898739, z: 0}
 --- !u!1 &8026702433097955801
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,9 +1033,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702433097955800}
   - component: {fileID: 8026702433097955803}
+  - component: {fileID: 2198841353033398428}
   m_Layer: 0
   m_Name: Fence_Side_Endcap (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,7 +1096,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c47f7593f9ac3cf41ac965b47d8e1b0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -967,6 +1108,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &2198841353033398428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702433097955801}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0785446, y: 0.26325607, z: 0.2}
+  m_Center: {x: 0.064733505, y: 0.04898739, z: 0}
 --- !u!1 &8026702433168343858
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,9 +1131,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8026702433168343861}
   - component: {fileID: 8026702433168343860}
+  - component: {fileID: 3470847973467448342}
   m_Layer: 0
   m_Name: Fence_Down
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1039,7 +1194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 75a47f53605c9fa4a9589bb39e162441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1051,3 +1206,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &3470847973467448342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026702433168343858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18662453, y: 1.170084, z: 0.2}
+  m_Center: {x: 0.014230728, y: -0.009343147, z: 0}
