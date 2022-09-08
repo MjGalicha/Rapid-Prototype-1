@@ -39,6 +39,7 @@ public class SnakeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Time : " + Time.timeScale);
         if(CanMove)
         {
             // Only allow turning up or down while moving in the x-axis
@@ -92,7 +93,7 @@ public class SnakeMovement : MonoBehaviour
                 (Mathf.Round(this.transform.position.y) + direction.y),
                 0.0f);
             
-            Debug.Log(Time.time);
+            //Debug.Log(Time.time);
             nextUpdate = Time.time + (1f / (speed * speedMultiplier));
  
         }
@@ -120,6 +121,7 @@ public class SnakeMovement : MonoBehaviour
         this.transform.position = Vector3.zero;
         gameOverText.enabled = false;
         CanMove = true;
+        Time.timeScale = 1;
         SceneManager.LoadScene("GameScene");
     }
 
@@ -130,6 +132,7 @@ public class SnakeMovement : MonoBehaviour
             score++;
             scoreText.text = score.ToString();
             speed = speed + 10f;
+            Time.timeScale = Time.timeScale + 0.05f;
             Grow();
             if(score > PlayerPrefs.GetInt("HighScore", 0))
             {
