@@ -33,7 +33,7 @@ public class SnakeMovement : MonoBehaviour
         highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         rbd = GetComponent<Rigidbody2D>();
         speedMultiplier = 1f;
-        speed = 20f;
+        //speed = 20f;
     }
 
     // Update is called once per frame
@@ -131,7 +131,7 @@ public class SnakeMovement : MonoBehaviour
         {
             score++;
             scoreText.text = score.ToString();
-            speed = speed + 10f;
+            speed = speed + 5f;
             Time.timeScale = Time.timeScale + 0.05f;
             Grow();
             if(score > PlayerPrefs.GetInt("HighScore", 0))
