@@ -14,9 +14,12 @@ public class SnakeMovement : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
-    public float speed = 2f;
     private int score = 0;
     private Rigidbody2D rbd;
+
+    public float speed = 20f;
+    private float speedMultiplier = 1f;
+    private float nextUpdate;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,9 @@ public class SnakeMovement : MonoBehaviour
         segments = new List<Transform>(); //Create new list every game
         segments.Add(this.transform);   //Init with head of snake 
         highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        rbd = GetComponent<Rigidbody2D>();
+        speedMultiplier = 1f;
+        speed = 20f;
     }
 
     // Update is called once per frame
@@ -34,7 +40,7 @@ public class SnakeMovement : MonoBehaviour
     {
         if(CanMove)
         {                       
-            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && direction != Vector2.down)  /* This nested loop gets player input and updates direction */
+            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && direction != Vector2.down)  // This nested loop gets player input and updates direction 
             {
                 direction = Vector2.up;
             }
@@ -55,6 +61,11 @@ public class SnakeMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if (Time.time < nextUpdate)
+        {
+            return;
+        }
         //If the player can move, continue its movement path, otherwise cease movement
         if (CanMove)
         {
@@ -67,6 +78,10 @@ public class SnakeMovement : MonoBehaviour
                 (Mathf.Round(this.transform.position.x) + direction.x),
                 (Mathf.Round(this.transform.position.y) + direction.y),
                 0.0f);
+            
+            Debug.Log(Time.time);
+            nextUpdate = Time.time + (1f / (speed * speedMultiplier));
+ 
         }
     }
         
@@ -101,6 +116,7 @@ public class SnakeMovement : MonoBehaviour
         {
             score++;
             scoreText.text = score.ToString();
+            speed = speed + 10f;
             Grow();
             if(score > PlayerPrefs.GetInt("HighScore", 0))
             {
@@ -115,5 +131,18 @@ public class SnakeMovement : MonoBehaviour
             Invoke("GameOver", 3f);
             
         }
+    }
+
+    public bool Occupies(float x, float y)
+    {
+        foreach (Transform segment in segments)
+        {
+            if (segment.position.x == x && segment.position.y == y)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
