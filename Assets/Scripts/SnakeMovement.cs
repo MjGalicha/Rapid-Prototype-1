@@ -10,6 +10,7 @@ public class SnakeMovement : MonoBehaviour
     public Transform segmentPrefab;
     List<Transform> segments;
     public bool CanMove;
+    private Vector2 input;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
@@ -39,28 +40,40 @@ public class SnakeMovement : MonoBehaviour
     void Update()
     {
         if(CanMove)
-        {                       
-            if ((Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.UpArrow)) && direction != Vector2.down)  // This nested loop gets player input and updates direction 
+        {
+            // Only allow turning up or down while moving in the x-axis
+            if (direction.x != 0f)
             {
-                direction = Vector2.up;
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    input = Vector2.up;
+                }
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    input = Vector2.down;
+                }
             }
-            else if ((Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.DownArrow)) && direction != Vector2.up)
-            { 
-                direction = Vector2.down;
-            }
-            else if ((Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow)) && direction != Vector2.right)
+            // Only allow turning left or right while moving in the y-axis
+            else if (direction.y != 0f)
             {
-                direction = Vector2.left;
-            }
-            else if ((Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow)) && direction != Vector2.left)
-            {
-                direction = Vector2.right;
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    input = Vector2.right;
+                }
+                else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    input = Vector2.left;
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
+        if (input != Vector2.zero)
+        {
+            direction = input;
+        }
 
         if (Time.time < nextUpdate)
         {
