@@ -45,6 +45,7 @@ public class SnakeMovement : MonoBehaviour
         InitDenMultiplier2();
         InitDenMultiplier3();
         InitDenMultiplier4();
+        Time.timeScale = 0.8f;
         //speed = 20f;
     }
 
