@@ -15,6 +15,7 @@ public class Food : MonoBehaviour
 
     private SnakeMovement snake;
 
+
     private void Awake()
     {
         snake = FindObjectOfType<SnakeMovement>();

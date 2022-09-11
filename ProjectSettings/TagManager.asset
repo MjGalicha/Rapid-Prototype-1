@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Food
   - Obstacle
+  - Den1
+  - Den2
+  - Den3
+  - Den4
   layers:
   - Default
   - TransparentFX

@@ -8,19 +8,27 @@ public class SnakeMovement : MonoBehaviour
 {
     private Vector2 direction = Vector2.right; //Snake will by default start moving to the right when the game starts
     public Transform segmentPrefab;
-    List<Transform> segments;
+    List<Transform> segments = new List<Transform>();
     public bool CanMove;
     private Vector2 input;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
+
+    public TextMeshProUGUI Den1;
+    public TextMeshProUGUI Den2;
+    public TextMeshProUGUI Den3;
+    public TextMeshProUGUI Den4;
+
     private int score = 0;
     private Rigidbody2D rbd;
 
     public float speed = 20f;
     private float speedMultiplier = 1f;
     private float nextUpdate;
+
+    private int DenM1, DenM2, DenM3, DenM4;
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +41,18 @@ public class SnakeMovement : MonoBehaviour
         highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         rbd = GetComponent<Rigidbody2D>();
         speedMultiplier = 1f;
+        InitDenMultiplier1();
+        InitDenMultiplier2();
+        InitDenMultiplier3();
+        InitDenMultiplier4();
         //speed = 20f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Time : " + Time.timeScale);
-        if(CanMove)
+        //Debug.Log("Time : " + Time.timeScale);
+        if (CanMove)
         {
             // Only allow turning up or down while moving in the x-axis
             if (direction.x != 0f)
@@ -81,7 +93,7 @@ public class SnakeMovement : MonoBehaviour
             return;
         }
         //If the player can move, continue its movement path, otherwise cease movement
-        if (CanMove)
+        if(CanMove)
         {
             for (int i = segments.Count - 1; i > 0; i--)
             {
@@ -92,13 +104,12 @@ public class SnakeMovement : MonoBehaviour
                 (Mathf.Round(this.transform.position.x) + direction.x),
                 (Mathf.Round(this.transform.position.y) + direction.y),
                 0.0f);
-            
-            //Debug.Log(Time.time);
+
             nextUpdate = Time.time + (1f / (speed * speedMultiplier));
- 
         }
+
     }
-        
+
 
     void Grow()
     {
@@ -109,16 +120,16 @@ public class SnakeMovement : MonoBehaviour
 
     void GameOver()
     {
-        for(int i = 1; i<segments.Count; i++)
+        for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
         }
         segments.Clear();
         segments.Add(this.transform);
+        this.transform.position = Vector3.zero;
         score = 0;
         scoreText.text = score.ToString();
 
-        this.transform.position = Vector3.zero;
         gameOverText.enabled = false;
         CanMove = true;
         Time.timeScale = 1;
@@ -134,7 +145,7 @@ public class SnakeMovement : MonoBehaviour
             speed = speed + 5f;
             Time.timeScale = Time.timeScale + 0.05f;
             Grow();
-            if(score > PlayerPrefs.GetInt("HighScore", 0))
+            if (score > PlayerPrefs.GetInt("HighScore", 0))
             {
                 PlayerPrefs.SetInt("HighScore", score);
                 highScoreText.text = score.ToString();
@@ -145,7 +156,78 @@ public class SnakeMovement : MonoBehaviour
             gameOverText.enabled = true;
             CanMove = false;
             Invoke("GameOver", 3f);
-            
+
+        }
+        else if(other.tag == "Den1")
+        {
+            if(segments.Count > 1)
+            {
+                int count = segments.Count - 1;
+
+                for (int i = 1; i < segments.Count; i++)
+                {
+                    Destroy(segments[i].gameObject);
+                }
+                segments.Clear();
+                segments.Add(this.transform);
+                score = score + (DenM1 * count);
+                scoreText.text = score.ToString();
+                InitDenMultiplier1();
+            }
+
+        }
+        else if (other.tag == "Den4")
+        {
+            if(segments.Count > 1)
+            {
+                int count = segments.Count - 1;
+
+                for (int i = 1; i < segments.Count; i++)
+                {
+                    Destroy(segments[i].gameObject);
+                }
+                segments.Clear();
+                segments.Add(this.transform);
+                score = score + (DenM4 * count);
+                scoreText.text = score.ToString();
+                InitDenMultiplier4();
+            }
+
+        }
+        else if (other.tag == "Den2")
+        {
+            if(segments.Count > 1)
+            {
+                int count = segments.Count - 1;
+
+                for (int i = 1; i < segments.Count; i++)
+                {
+                    Destroy(segments[i].gameObject);
+                }
+                segments.Clear();
+                segments.Add(this.transform);
+                score = score + (DenM2 * count);
+                scoreText.text = score.ToString();
+                InitDenMultiplier2();
+            }
+        }
+        else if (other.tag == "Den3")
+        {
+            if(segments.Count > 1)
+            {
+                int count = segments.Count - 1;
+
+                for (int i = 1; i < segments.Count; i++)
+                {
+                    Destroy(segments[i].gameObject);
+                }
+                segments.Clear();
+                segments.Add(this.transform);
+                score = score + (DenM3 * count);
+                scoreText.text = score.ToString();
+                InitDenMultiplier3();
+            }
+
         }
     }
 
@@ -158,7 +240,30 @@ public class SnakeMovement : MonoBehaviour
                 return true;
             }
         }
-
         return false;
+    }
+
+    void InitDenMultiplier1()
+    {
+        DenM1 = Random.Range(1, 11);
+        Den1.text = "x" + DenM1;
+    }
+
+    void InitDenMultiplier2()
+    {
+        DenM2 = Random.Range(1, 11);
+        Den2.text = "x" + DenM2;
+    }
+
+    void InitDenMultiplier3()
+    {
+        DenM3 = Random.Range(1, 11);
+        Den3.text = "x" + DenM3;
+    }
+
+    void InitDenMultiplier4()
+    {
+        DenM4 = Random.Range(1, 11);
+        Den4.text = "x" + DenM4;
     }
 }
