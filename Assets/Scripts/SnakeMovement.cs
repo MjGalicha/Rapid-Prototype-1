@@ -140,7 +140,7 @@ public class SnakeMovement : MonoBehaviour
         gameOverText.enabled = false;
         CanMove = true;
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Art_GameScene");
     }
 
     private void OnTriggerEnter2D(Collider2D other) //When snake collides with the food it grows
