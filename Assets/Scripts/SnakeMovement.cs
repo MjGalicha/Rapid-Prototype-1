@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour
 {
+    private Animator animator;
+
     private Vector2 direction = Vector2.right; //Snake will by default start moving to the right when the game starts
     public Transform segmentPrefab;
     List<Transform> segments = new List<Transform>();
@@ -46,7 +48,7 @@ public class SnakeMovement : MonoBehaviour
         InitDenMultiplier3();
         InitDenMultiplier4();
         Time.timeScale = 0.8f;
-        //speed = 20f;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,10 +63,12 @@ public class SnakeMovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     input = Vector2.up;
+                    animator.SetFloat("YInput", 1f);
                 }
                 else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     input = Vector2.down;
+                    animator.SetFloat("YInput", -1f);
                 }
             }
             // Only allow turning left or right while moving in the y-axis
@@ -73,10 +77,12 @@ public class SnakeMovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     input = Vector2.right;
+                    animator.SetFloat("XInput", 1f);
                 }
                 else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     input = Vector2.left;
+                    animator.SetFloat("XInput", -1f);
                 }
             }
         }
