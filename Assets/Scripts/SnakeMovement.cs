@@ -174,7 +174,6 @@ public class SnakeMovement : MonoBehaviour
 
     void GameOver()
     {
-        PlayDeathSFX();
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
@@ -208,6 +207,7 @@ public class SnakeMovement : MonoBehaviour
         }
         else if (other.tag == "Obstacle")
         {
+            PlayDeathSFX();
             gameOverText.enabled = true;
             CanMove = false;
             Invoke("GameOver", 3f);
