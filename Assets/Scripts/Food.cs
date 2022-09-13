@@ -15,6 +15,8 @@ public class Food : MonoBehaviour
 
     public Transform Player;
     public float minDistance = 3f;
+    public AudioSource spawnSFX;
+    public AudioClip[] spawnSFXArray;
     private float randomX;
     private float randomY;
     private int Tracker;
@@ -26,6 +28,7 @@ public class Food : MonoBehaviour
     private void Awake()
     {
         snake = FindObjectOfType<SnakeMovement>();
+        spawnSFX = GetComponent<AudioSource>();
     }
 
     public void RandomizePosition()
@@ -247,6 +250,8 @@ public class Food : MonoBehaviour
         if(other.tag == "Player")
         {
             RandomizePosition();
+            spawnSFX.clip = spawnSFXArray[Random.Range(0,spawnSFXArray.Length)];
+            spawnSFX.PlayOneShot(spawnSFX.clip);
         }
     }
 
