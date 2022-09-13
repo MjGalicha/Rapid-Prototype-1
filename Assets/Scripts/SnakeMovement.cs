@@ -199,19 +199,15 @@ public class SnakeMovement : MonoBehaviour
             speed = speed + 5f;
             Time.timeScale = Time.timeScale + 0.05f;
             Grow();
-            if (score > PlayerPrefs.GetInt("HighScore", 0))
-            {
-                PlayerPrefs.SetInt("HighScore", score);
-                highScoreText.text = score.ToString();
-            }
+            UpdateHighScore();
         }
         else if (other.tag == "Obstacle")
         {
             PlayDeathSFX();
+            UpdateHighScore();
             gameOverText.enabled = true;
             CanMove = false;
             Invoke("GameOver", 3f);
-
         }
         else if(other.tag == "Den1")
         {
@@ -233,7 +229,7 @@ public class SnakeMovement : MonoBehaviour
                 scoreText.text = score.ToString();
                 InitDenMultiplier1();
             }
-
+            UpdateHighScore();
         }
         else if (other.tag == "Den4")
         {
@@ -255,7 +251,7 @@ public class SnakeMovement : MonoBehaviour
                 scoreText.text = score.ToString();
                 InitDenMultiplier4();
             }
-
+            UpdateHighScore();
         }
         else if (other.tag == "Den2")
         {
@@ -277,6 +273,7 @@ public class SnakeMovement : MonoBehaviour
                 scoreText.text = score.ToString();
                 InitDenMultiplier2();
             }
+            UpdateHighScore();
         }
         else if (other.tag == "Den3")
         {
@@ -298,7 +295,7 @@ public class SnakeMovement : MonoBehaviour
                 scoreText.text = score.ToString();
                 InitDenMultiplier3();
             }
-
+            UpdateHighScore();
         }
     }
 
@@ -312,6 +309,15 @@ public class SnakeMovement : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void UpdateHighScore()
+    {
+        if (score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            highScoreText.text = score.ToString();
+        }
     }
 
     private void PlayDeathSFX()
