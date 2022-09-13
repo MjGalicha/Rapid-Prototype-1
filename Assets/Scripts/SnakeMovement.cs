@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SnakeMovement : MonoBehaviour
 {
     private Animator animator;
+    private Animator sheepAnimator;
 
     private Vector2 direction = Vector2.right; //Snake will by default start moving to the right when the game starts
     public Transform segmentPrefab;
@@ -31,6 +32,9 @@ public class SnakeMovement : MonoBehaviour
     private float nextUpdate;
 
     private int DenM1, DenM2, DenM3, DenM4;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,28 +64,35 @@ public class SnakeMovement : MonoBehaviour
             // Only allow turning up or down while moving in the x-axis
             if (direction.x != 0f)
             {
+                
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     input = Vector2.up;
                     animator.SetFloat("YInput", 1f);
+                    animator.SetFloat("XInput", 0f);
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     input = Vector2.down;
                     animator.SetFloat("YInput", -1f);
+                    animator.SetFloat("XInput", 0f);
                 }
-            }
+            } 
             // Only allow turning left or right while moving in the y-axis
             else if (direction.y != 0f)
             {
+                
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     input = Vector2.right;
+                    animator.SetFloat("YInput", 0f);
                     animator.SetFloat("XInput", 1f);
                 }
                 else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     input = Vector2.left;
+                    animator.SetFloat("YInput", 0f);
                     animator.SetFloat("XInput", -1f);
                 }
             }
@@ -104,7 +115,37 @@ public class SnakeMovement : MonoBehaviour
         {
             for (int i = segments.Count - 1; i > 0; i--)
             {
+                sheepAnimator = segments[i].GetComponent<Animator>();
+
+                if(segments[i].position.y < segments[i - 1].position.y)
+                {
+                    //going up
+                    sheepAnimator.SetFloat("YInput", 1f);
+                    sheepAnimator.SetFloat("XInput", 0f);
+                }
+                if (segments[i].position.y > segments[i - 1].position.y)
+                {
+                    //going down
+                    sheepAnimator.SetFloat("YInput", -1f);
+                    sheepAnimator.SetFloat("XInput", 0f);
+                }
+                if (segments[i].position.x < segments[i - 1].position.x)
+                {
+                    //going right
+                    sheepAnimator.SetFloat("YInput", 0f);
+                    sheepAnimator.SetFloat("XInput", 1f);
+                }
+                if (segments[i].position.x > segments[i - 1].position.x)
+                {
+                    //going right
+                    sheepAnimator.SetFloat("YInput", 0f);
+                    sheepAnimator.SetFloat("XInput", -1f);
+                }
+
+
+
                 segments[i].position = segments[i - 1].position;
+               
             }
 
             this.transform.position = new Vector3(
