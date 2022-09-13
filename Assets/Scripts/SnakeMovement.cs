@@ -13,6 +13,10 @@ public class SnakeMovement : MonoBehaviour
     public Transform segmentPrefab;
     List<Transform> segments = new List<Transform>();
     public bool CanMove;
+    public AudioClip[] DogSFXArray;
+    public AudioSource DogSFX;
+    public AudioClip[] deathSFXArray;
+    public AudioSource deathSFX;
     private Vector2 input;
 
     public TextMeshProUGUI scoreText;
@@ -53,6 +57,8 @@ public class SnakeMovement : MonoBehaviour
         InitDenMultiplier4();
         Time.timeScale = 0.8f;
         animator = GetComponent<Animator>();
+        DogSFX = GetComponent<AudioSource>();
+        deathSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -168,6 +174,7 @@ public class SnakeMovement : MonoBehaviour
 
     void GameOver()
     {
+        PlayDeathSFX();
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);
@@ -216,9 +223,13 @@ public class SnakeMovement : MonoBehaviour
                 {
                     Destroy(segments[i].gameObject);
                 }
+                PlayDogSFX();
                 segments.Clear();
                 segments.Add(this.transform);
                 score = score + (DenM1 * count);
+                speedMultiplier = 1f;
+                speed = 20f;
+                Time.timeScale = 1;
                 scoreText.text = score.ToString();
                 InitDenMultiplier1();
             }
@@ -234,9 +245,13 @@ public class SnakeMovement : MonoBehaviour
                 {
                     Destroy(segments[i].gameObject);
                 }
+                PlayDogSFX();
                 segments.Clear();
                 segments.Add(this.transform);
                 score = score + (DenM4 * count);
+                speedMultiplier = 1f;
+                speed = 20f;
+                Time.timeScale = 0.75f;
                 scoreText.text = score.ToString();
                 InitDenMultiplier4();
             }
@@ -252,9 +267,13 @@ public class SnakeMovement : MonoBehaviour
                 {
                     Destroy(segments[i].gameObject);
                 }
+                PlayDogSFX();
                 segments.Clear();
                 segments.Add(this.transform);
                 score = score + (DenM2 * count);
+                speedMultiplier = 1f;
+                speed = 20f;
+                Time.timeScale = 1;
                 scoreText.text = score.ToString();
                 InitDenMultiplier2();
             }
@@ -269,9 +288,13 @@ public class SnakeMovement : MonoBehaviour
                 {
                     Destroy(segments[i].gameObject);
                 }
+                PlayDogSFX();
                 segments.Clear();
                 segments.Add(this.transform);
                 score = score + (DenM3 * count);
+                speedMultiplier = 1f;
+                speed = 20f;
+                Time.timeScale = 1;
                 scoreText.text = score.ToString();
                 InitDenMultiplier3();
             }
@@ -291,27 +314,38 @@ public class SnakeMovement : MonoBehaviour
         return false;
     }
 
+    private void PlayDeathSFX()
+    {
+        deathSFX.clip = deathSFXArray[Random.Range(0, deathSFXArray.Length)];
+        deathSFX.PlayOneShot(deathSFX.clip);
+    }
+    private void PlayDogSFX()
+    {
+        DogSFX.clip = DogSFXArray[Random.Range(0, DogSFXArray.Length)];
+        DogSFX.PlayOneShot(DogSFX.clip);
+    }
+
     void InitDenMultiplier1()
     {
-        DenM1 = Random.Range(1, 11);
+        DenM1 = Random.Range(3, 7);
         Den1.text = "x" + DenM1;
     }
 
     void InitDenMultiplier2()
     {
-        DenM2 = Random.Range(1, 11);
+        DenM2 = Random.Range(2, 6);
         Den2.text = "x" + DenM2;
     }
 
     void InitDenMultiplier3()
     {
-        DenM3 = Random.Range(1, 11);
+        DenM3 = Random.Range(1, 5);
         Den3.text = "x" + DenM3;
     }
 
     void InitDenMultiplier4()
     {
-        DenM4 = Random.Range(1, 11);
+        DenM4 = Random.Range(7, 11);
         Den4.text = "x" + DenM4;
     }
 }
